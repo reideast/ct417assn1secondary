@@ -1,0 +1,8 @@
+# Maven files
+target
+
+# IntelliJ Files
+.idea
+*.iml
+
+# Non-project files
