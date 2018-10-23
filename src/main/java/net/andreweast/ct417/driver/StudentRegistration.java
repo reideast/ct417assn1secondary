@@ -11,8 +11,8 @@ public class StudentRegistration {
 
         students = new ArrayList<>();
 
-        students.add(new Student("Jane", "Smith", 23, new DateTime(), "55667788"));
-        students.add(new Student("Jack", "Doe", 21, new DateTime(), "66778899"));
+        students.add(new Student("Jane", "Smith", new DateTime(), "55667788"));
+        students.add(new Student("Jack", "Doe", new DateTime(), "66778899"));
 
         for(Student item : students) {
             System.out.println(item.getUsername() + ": " + item.getLastName() + ", " + item.getFirstName());
