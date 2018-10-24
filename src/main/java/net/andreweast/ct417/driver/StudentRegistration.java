@@ -7,6 +7,8 @@ import net.andreweast.ct417.Student;
 import org.joda.time.DateTime;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.stream.Collectors;
 
 public class StudentRegistration {
     public static void main(String[] args) {
@@ -57,6 +59,27 @@ public class StudentRegistration {
             System.err.println("Duplicate registration encountered even though no duplicates should have been pushed");
             e.printStackTrace();
             System.exit(1);
+        }
+
+        // Print out course information
+        final Course[] courses = {cs, ece};
+        for (Course course : courses) {
+            System.out.println("Course: " + course.getCourseName());
+            System.out.print("    Course modules: ");
+            System.out.println(Arrays.stream(course.getModuleList()).map(Module::getModuleName).collect(Collectors.joining(",")));
+        }
+
+        // Print out student information
+        final ArrayList<Student> students = new ArrayList<>();
+        students.addAll(csStudents);
+        students.addAll(eceStudents);
+        for(Student student : students) {
+            System.out.println("Student: " + student.getLastName() + ", " + student.getFirstName());
+            System.out.println("    Username: " + student.getUsername());
+            System.out.print("    Registered Courses: ");
+            System.out.println(Arrays.stream(student.getRegisteredCourses()).map(Course::getCourseName).collect(Collectors.joining(",")));
+            System.out.print("    Enrolled Modules: ");
+            System.out.println(Arrays.stream(student.getEnrolledModules()).map(Module::getModuleName).collect(Collectors.joining(",")));
         }
     }
 }
